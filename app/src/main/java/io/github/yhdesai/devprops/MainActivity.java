@@ -1,5 +1,6 @@
 package io.github.yhdesai.devprops;
 
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import io.github.yhdesai.devprops.Fragments.workshop;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -35,6 +38,8 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
     }
 
     @Override
@@ -78,9 +83,9 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_chat) {
             Intent chat = new Intent(MainActivity.this, chat.class);
             startActivity(chat);
-    /**    } else if (id == R.id.nav_gallery) {
-       //     FragmentManager todo = getFragmentManager();
-       //     todo.beginTransaction().replace(R.id.content_frame, new ToDo()).commit();
+       } else if (id == R.id.nav_workshop) {
+            FragmentManager todo = getFragmentManager();
+           todo.beginTransaction().replace(R.id.content_frame, new workshop()).commit(); /**
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
