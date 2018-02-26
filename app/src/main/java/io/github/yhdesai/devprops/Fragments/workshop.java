@@ -3,6 +3,7 @@ package io.github.yhdesai.devprops.Fragments;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -41,8 +42,8 @@ import io.github.yhdesai.devprops.DeveloperMessage;
 import io.github.yhdesai.devprops.MessageAdapter;
 import io.github.yhdesai.devprops.R;
 
-public class workshop extends Fragment {
-    private static final String TAG = "chat";
+public class workshop extends Fragment   {
+    private static final String TAG = "workshop";
 
     public static final String ANONYMOUS = "anonymous";
     public static final int DEFAULT_MSG_LENGTH_LIMIT = 1000;
@@ -67,15 +68,17 @@ public class workshop extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_1, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_workshop, container, false);
+
         FirebaseApp.initializeApp(getActivity());
+
 
         mUsername = ANONYMOUS;
         // Initialize Firebase components
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mFirebaseAuth = FirebaseAuth.getInstance();
 
-        mMessagesDatabaseReference = mFirebaseDatabase.getReference().child("1");
+        mMessagesDatabaseReference = mFirebaseDatabase.getReference().child("workshop");
 
 
 
@@ -185,7 +188,12 @@ public class workshop extends Fragment {
 
 
 
-
+    public void form (View view){
+        String url = "https://goo.gl/forms/KTIHsTM7efZyv88p1";
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(url));
+        startActivity(i);
+    }
 
 
 
